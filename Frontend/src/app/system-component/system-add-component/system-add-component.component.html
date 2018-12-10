@@ -1,0 +1,59 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<div class="plus">
+
+  <i class="fa fa-plus-square-o" aria-hidden="true" style="float:right;" (click)="createSystem()"></i>
+
+</div>
+
+<form class="forms">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col" (click)="handleSort('acronym')">System Name
+          <i class="fa fa-arrow-down testColor" *ngIf="!desc"></i> <i class="fa fa-arrow-up testColor" *ngIf="desc"></i></th>
+
+        <th scope="col" (click)="handleSort1('businessOwnerNameDoe')">Business Owner
+          <i class="fa fa-arrow-down testColor" *ngIf="!businessOwner"></i> <i class="fa fa-arrow-up testColor" *ngIf="businessOwner"></i></th>
+
+
+        <th scope="col" (click)="handleSort2('systemOwnerNameDoe')">System Owner
+          <i class="fa fa-arrow-down testColor" *ngIf="!systemOwner"></i> <i class="fa fa-arrow-up testColor" *ngIf="systemOwner"></i></th>
+          <th scope="col">
+              Last UpdatedBy
+            </th>
+          <th scope="col">
+            Last Updated Date
+          </th>
+
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let pendingApplication of pendingApplications | paginate: { itemsPerPage: 10, currentPage: p }">
+        <td>
+          <a class="anchor"  (click)="viewApplication(pendingApplication.acronym)">{{pendingApplication.acronym}}</a>
+        </td>
+        <td>
+          {{pendingApplication.businessOwnerNameDoe}}
+        </td>
+
+        <td>
+          {{pendingApplication.systemOwnerNameDoe}}
+        </td>
+        <td>
+          {{pendingApplication.updatedBy}}
+        </td>
+        <td>
+          {{pendingApplication.updatedTs | filterDate | date:'MM/dd/yyyy' }}
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+  <pagination-controls *ngIf="showPagination" (pageChange)="p = $event"></pagination-controls>
+  <br>
+
+
+</form>

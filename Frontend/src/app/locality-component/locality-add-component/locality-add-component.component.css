@@ -1,0 +1,63 @@
+.former{
+
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  margin: 20px;
+  background-color: #EEEEEE;
+}
+
+
+.modal-header{
+	background-color: #3A539B;
+	color: #ffffff;
+}
+
+
+.modal-title{
+	background-color: #3A539B;
+	color: #ffffff;
+}
+
+
+.asterisk{
+  display: inline;
+  color: red;
+  margin-left: 2px;
+}
+
+.btn {
+  margin-top: 25px;
+  background-color: #3A539B;
+  border-color: #3A539B;
+  color: white;
+  padding: 10px 10px;
+  width: auto;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 3px;
+}
+
+.container1 {
+  width:100%;
+  margin: auto;
+}
+#first {
+width : 78%;
+  float: left;
+  height:100%;
+
+}
+#second {
+  width:22%;
+  float: right;
+  height:100%;
+  bottom:0px;
+
+ 
+}
+
+
+

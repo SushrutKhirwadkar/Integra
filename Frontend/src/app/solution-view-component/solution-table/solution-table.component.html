@@ -1,0 +1,49 @@
+<div class="my-container">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+
+
+
+
+
+<form class="forms">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th (click)="handleSort()" style="color:white">Solution/Model<i
+					class="sorting fa fa-arrow-down" *ngIf="!desc" ></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="desc"></i></th>
+      <th (click)="handleSorta()" style="color:white" >Vendor<i
+					class="sorting fa fa-arrow-down" *ngIf="!des"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="des"></i></th>
+      <th (click)="handleSortb()" style="color:white">Equipment Type<i
+					class="sorting fa fa-arrow-down" *ngIf="!dec"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="dec"></i></th>
+      <th (click)="handleSortc()" style="color:white">System Type<i
+					class="sorting fa fa-arrow-down" *ngIf="!de"></i> <i
+					class="sorting fa fa-arrow-up" *ngIf="de"></i></th>
+      <th style="color:white">DoEL Approved Date</th>
+      <th style="color:white">Renewal Due Date</th> 
+      <th style="color:white">Last UpdatedBy</th>
+      <th style="color:white">Last Updated Date</th>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let solution of solutions | paginate: { itemsPerPage: 10, currentPage: p }">
+                         <td><a style="color:blue;cursor: pointer;" (click)="goTo(solution.solutionId)">{{ solution.name }}</a></td>
+                         <td>{{ solution.vendor.name }}</td>
+                         <td>{{solution.solutionTypeName }}</td>
+                         <td>{{ solution.systemTypeDTO.name }}</td>
+                         <!-- <td>{{ solution.certDt }}</td> -->
+                         <td>{{ solution.certDt | filter | date:'MM/dd/yyyy'  }}</td> 
+                         <td>{{ solution.certRenewalDueDt | date:'MM/dd/yyyy' }}</td>
+                         <td>{{ solution.updatedBy}}</td>
+                         <td>{{ solution.updatedTs | filterDate | date:'MM/dd/yyyy' }}</td>
+                    </tr>
+    </tbody>
+  </table>
+  <br>
+  <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
+</form>

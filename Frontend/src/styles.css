@@ -1,0 +1,99 @@
+/* You can add global styles to this file, and also import other style files */
+
+.former {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 20px;
+    /* background-color:rgba(#eee, #eee, #eee, 0.2); */
+    background-color: #fff;
+    box-shadow:5px 10px 20px 1px rgba(125, 122, 118, 1);
+}
+
+.asterisk {
+    display: inline;
+    color: red;
+    margin-left: 2px;
+}
+
+th, td {
+    text-align: center!important;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.form-control[_ngcontent-c7]:disabled, .form-control[readonly][_ngcontent-c7] {
+    background-color: #e9ecef;
+}
+
+.btn {
+    float: right;
+    margin-top: 25px;
+    background-color: #3A539B;
+    border-color: #3A539B;
+    color: white;
+    padding: 10px 10px;
+    width: auto;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 3px;
+}
+
+label {
+    font-weight: bolder;
+}
+
+h5 {
+    font-weight: bolder;
+}
+
+.center{
+    margin: 0 auto; 
+}
+
+.lines {
+    height: 100%;
+    position: relative;
+  }
+  
+  .line {
+    height: inherit;
+    width: 100%;
+    position: absolute;
+    background: white;
+  }
+  .line.l--0 {
+    left: 0;
+  }
+  .line.l--25 {
+    left: 25%;
+  }
+  .line.l--50 {
+    left: 50%;
+  }
+  .line.l--75 {
+    left: 75%;
+  }
+  .line.l--100 {
+    left: calc(100% - 1px);
+  }
+  
+  .line__label {
+    display: block;
+    width: 100px;
+    text-align: center;
+    position: absolute;
+    bottom: -20px;
+    right: -50px;
+  }
+  .line__label.title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+

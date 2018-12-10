@@ -1,0 +1,87 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Info</h4>
+    </div>
+    <div class="modal-body">
+        <p>{{info}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark confbtn" (click)="c()">Ok</button>
+    </div>
+</ng-template>
+<div class="form-div">
+    <form #myForm="ngForm" class="former">
+            
+            <div class="plus">
+
+                <span *ngIf="showSave" class=" title elipsis pull-right"> <a (click)="saveFindings()" title="Save Audit"
+                        class="ng-hide"> <i class="fa fa-floppy-o" aria-hidden="true" style="font-size: 24px;"></i>
+                    </a>
+                </span>
+                <span *ngIf="showEdit" class=" title elipsis pull-right">
+                    <a>
+                        <fa class="edit-icon icons" [name]="'edit'" (click)="valueChanged()"></fa>
+                    </a>
+                </span>
+                <span class=" title elipsis pull-right"> <a title="Application audit history"> <i class="fa fa-history"
+                            aria-hidden="true" style="font-size: 24px;"></i>
+                    </a>
+                </span> <span class=" title elipsis pull-right"> <a (click)="showLeft()" title="Change to view mode. This reverts the changes">
+                        <i class="fa fa-times" aria-hidden="true" style="font-size: 24px;"></i>
+                    </a> <a (click)="showLeft()" title="Go back to audit section."> <i class="fa fa-arrow-circle-o-left"
+                            aria-hidden="true" style="font-size: 24px;"></i>
+                    </a>
+                </span>
+
+
+            </div>
+        <div class="infoBox">
+            <div class="headerOfBox">
+                    <h4>FINDINGS</h4>
+            </div>
+            <fieldset [disabled]="showForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label>Type of Finding</label>
+
+                        <input type="text" class="form-control" name="typeOfFindings" id="TypeOfFinding" [(ngModel)]="appAssess.typeOfFindings">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Overall risk level</label>
+                        <input type="text" class="form-control" name="overallRiskLevel" id="overallRiskLevel"
+                            [(ngModel)]="appAssess.overallRiskLevel">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <h5>Description</h5>
+                    <textarea id="description" rows="10" [ngxSummernote]="config" [ngxSummernoteDisabled]="showForm" name="description" class="form-control" [(ngModel)]="appAssess.findingDescription"></textarea>
+
+
+                </div>
+                
+                <div class="form-row">
+                    <h4>Comments</h4>
+                    <textarea name="comments" [ngxSummernote]="config" [ngxSummernoteDisabled]="showForm" id="comments" rows="10" class="form-control" [(ngModel)]="appAssess.findingComments"></textarea>
+
+                </div>
+            
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+
+                        <label>Responsible Party</label>
+                        <input type="text" name="responsibleParty" class="form-control" id="responsibleParty"
+                            [(ngModel)]="appAssess.responsibleParty">
+
+                    </div>
+
+                </div>
+            </fieldset>
+        </div>
+
+    </form>
+</div>

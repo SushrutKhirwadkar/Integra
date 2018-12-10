@@ -1,0 +1,111 @@
+<div class="my-container">
+	<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title">Success</h4>
+	
+	</div>
+	<div class="modal-body">
+		<p>{{contentData}}</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark confbtn" (click)="c();">Ok</button>
+	</div>
+</ng-template>
+<div class="save-edit" style="float: right;" *ngIf="showEditButton && !isShow">
+	<fa class="edit-icon icons" data-toggle="tooltip" data-placement="right" title="Save" data-animation="true" data-delay="0"
+	 [name]="'edit'" (click)="editClick()"></fa>
+</div>
+
+<form #formName="ngForm"  (ngSubmit)="createSystem()" enctype="multipart/form-data">
+<br>
+<br>
+
+	<div id="form1">
+		<fieldset [disabled]="editableForm">
+
+				<div class="infoBox">
+						<div class="headerOfBox"><h4>General Information</h4></div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+
+					<label for="inputState">System Acronym <span class="asterisk">*</span></label>
+					
+					<input type="text" *ngIf="showBox"  name="acronym" [(ngModel)]="system.acronym" required>
+					<input type="text" *ngIf="!showBox"  name="acronym" [(ngModel)]="system.acronym" required
+					 readonly>
+				</div>
+				<div class="form-group col-md-6">
+
+					<label for="inputState">System Name<span class="asterisk">*</span></label>
+					
+					<input type="text"  name="systemName" [(ngModel)]="system.name" required>
+				</div>
+
+			</div>
+			<div *ngIf="showEditButton" class="form-row">
+				<div class="form-group col-md-6">
+
+					<label for="inputState">Last Updated by</label>
+
+					<input type="text"  name="lastUpdatedBy" [(ngModel)]="system.updatedBy" readonly>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="lastName">Updated at</label>
+
+					<input type="text"  name="updatedTime" [(ngModel)]="updatedTime" readonly>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="infoBox">
+				<div class="headerOfBox"><h4>Contact Information</h4></div>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+
+					<label for="inputState">Business Owner <span class="asterisk">*</span></label>
+					
+					<input type="text" name="firstName" [(ngModel)]="system.businessOwnerNameDoe" required>
+				</div>
+				<div class="form-group col-md-6">
+					<label for="lastName">System Owner <span class="asterisk">*</span></label>
+					
+					<input type="text"  name="lastName" [(ngModel)]="system.systemOwnerNameDoe" required>
+				</div>
+			</div>
+
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="infoBox">
+				<div class="headerOfBox"><h4>Other Information</h4></div>
+
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label class="label-form" for="definitiveSource"><b>System Sensitivity</b> <span class="asterisk">*</span></label>
+					
+					<input *ngIf="!showSource" type="text"  ngModel name="sysSen" [(ngModel)]="system.systemSensitivityName"
+					 required>
+					<select *ngIf="showSource" class="inputState" [(ngModel)]="system.systemSensitivity" (change)="selectDefinitive($event.target.value)"
+					 name="sysSen" required>
+						<option value="1">High</option>
+						<option value="2">Medium</option>
+						<option value="3">Low</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		</fieldset>
+	</div>
+		<div class="buttons">
+
+			<button *ngIf="isShow" type="submit" class="submit btn btn-primary" [disabled]="!formName.valid">Submit</button>
+			<button type="cancel" class="cancel btn btn-primary" (click)="goBack($event)">Cancel</button>
+		</div>
+	
+</form>
